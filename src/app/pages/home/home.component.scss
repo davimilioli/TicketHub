@@ -1,0 +1,147 @@
+.home{
+    padding: 1rem;
+
+    .list{
+        .list-header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            .list-header-count{
+                font-size: 1rem;
+            }
+        }
+        
+        
+        .list-content {
+            overflow-x: auto;
+            
+            table {
+                width: 1400px;
+                border-collapse: collapse;
+                background-color: var(--color-light);
+                border: 1px solid #E1E1E1;
+                margin: auto;
+            
+                thead {
+                    tr {
+                        color: var(--color-black);
+                        
+                        th {
+                            text-transform: uppercase;
+                            letter-spacing: 0.05em;
+                            border-right: 1px solid #E1E1E1;
+                            padding: 12px 15px;
+                            text-align: left;
+                            border-bottom: 1px solid #E1E1E1;
+
+                            &#id-table{
+                                max-width: 40px;
+                            }
+
+
+                    
+                            p {
+                                margin: 0;
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+            
+                tbody {
+                    tr:nth-child(even) {
+                        background-color: #F0F0F0;
+                    }
+            
+                    tr {
+                        transition: .3s all ease-out;
+                        cursor: pointer;
+
+                        th{
+                            border-right: 1px solid #E1E1E1;
+                        }
+
+                        &:hover {
+                            background-color: #ececec;
+                        }
+                
+                        td:first-child {
+                            font-weight: bold;
+                        }
+                
+                        td {
+                            border-right: 1px solid #E1E1E1;
+                            padding: 12px 15px;
+                            text-align: left;
+                            border-bottom: 1px solid #E1E1E1;
+
+                            &#prioridade-table span{
+                                padding: .5rem 1rem;
+                                border-radius: var(--border-radius);
+
+                                &.urgente{
+                                    background: red;
+                                    color: var(--color-light);
+                                }
+
+                                &.alta{
+                                    background: yellow;
+                                    color: var(--color-black);
+                                }
+                                
+                                &.normal{
+                                    background: green;
+                                    color: var(--color-light);
+                                }
+
+                                &.baixa{
+                                    background: #6c757d;
+                                    color: var(--color-light);
+                                }
+                            }
+
+                            &#status-table span{
+
+                                padding: .5rem 1rem;
+                                border-radius: var(--border-radius);
+
+                                
+                                &.inativo{
+                                    background: red;
+                                    color: var(--color-light);
+                                }
+
+                                &.ativo{
+                                    background: green;
+                                    color: var(--color-light);
+                                }
+                            }
+                            
+                
+                            &:last-child {
+                                border-right: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .list-null{
+            color: var(--color-black);
+            height: 200px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+              
+
+              
+
+        
+    }
+}

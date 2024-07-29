@@ -1,0 +1,44 @@
+<section class="home">
+    <div class="list">
+        <div class="list-header">
+            <div class="list-header-count">
+                <h2>Tickets({{ ticketResult.total > 0 ? ticketResult.total : 0 }})</h2>
+            </div>
+            <button class="btn">Criar ticket</button>
+        </div>
+        <div class="list-content" *ngIf="ticketResult && ticketResult.tickets.length > 0; else elseList">
+            <table>
+                <thead>
+                    <tr>
+                        <th id="id-table"><p>#</p></th>
+                        <th><p>Titulo</p></th>
+                        <th><p>Descrição</p></th>
+                        <th><p>Prioridade</p></th>
+                        <th><p>Solicitante</p></th>
+                        <th><p>Prazo</p></th>
+                        <th><p>Status</p></th>
+                        <th><p>Criado</p></th>
+                        <th><p>Atualizado</p></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of ticketResult.tickets" (click)="redirectTicket(item)">
+                      <th>{{ item.id }}</th>
+                      <td>{{ item.titulo }}</td>
+                      <td>{{ item.descricao.length > 35 ? item.descricao.slice(0,35) + '...' : item.descricao }}</td>
+                      <td id="prioridade-table"><span [class]="item.prioridade.toLowerCase()">{{ item.prioridade }}</span></td>
+                      <td>{{ item.solicitante }}</td>
+                      <td>{{ item.prazo_ate | date }}</td>
+                      <td id="status-table"><span class="ativo">Inativo</span></td>
+                      <td>{{ item.criado_em | date }}</td>
+                      <td>{{ item.atualizado_em | date }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <ng-template #elseList>
+            <p class="list-null">Não há tickets no momento</p>
+        </ng-template>
+    </div>
+
+</section>
