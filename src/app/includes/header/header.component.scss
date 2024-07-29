@@ -1,0 +1,122 @@
+header{
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-gray);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .perfil{
+        display: flex;
+        align-items: center;
+        gap: .7rem;
+        position: relative;
+
+        .perfil-avatar{
+            cursor: pointer;
+            transition: .3s all ease-out;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            
+            &:hover{
+/*                 border: 2px solid var(--color-black);
+                transition: .3s all ease-out; */
+
+                &::after{
+                    opacity: 1;
+                    transition: .3s all ease-out;
+                }
+            }
+            
+            img{
+                max-width: 50px;
+            }
+
+            &::after{
+                content: 'Conta';
+                position: absolute;
+                bottom: -35px;
+                height: 100%;
+                background: var(--color-black);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 20%;
+                color: #FFF;
+                padding: .6rem 1rem;
+                left: -19px;
+                border-radius: var(--border-radius);
+                opacity: 0;
+                transition: .3s all ease-out;
+            }
+            
+        }
+
+        .perfil-menu{
+            position: absolute;
+            top: 100%;
+            background-color: var(--color-light);
+            border-radius: 12px;
+            width: 282px;
+            right: 32px;
+            border: none;
+            left: auto;
+            text-align: left;
+            max-height: calc(100vh - 87px);
+            overflow-y: auto;
+            filter: drop-shadow(0px 0px 12px rgba(29,30,32,.16));
+            color: var(--color-gray);
+           /*  display: none; */
+            
+            .perfil-menu-header{
+                padding: 1rem;
+                border-bottom: 1px solid var(--color-gray);
+                color: var(--color-black);
+
+                span{
+                    font-weight: 600;
+                }
+
+                p{
+                    font-weight: 300;
+                }
+
+            }
+
+            .perfil-menu-list{
+                padding: 1rem;
+                color: var(--color-black);
+
+                ul{
+                    list-style: none;
+
+                    
+                    li{
+                        padding: .5rem 1rem;
+                        border-radius: var(--border-radius);
+                        cursor: pointer;
+                        transition: .3s all ease-out;
+
+                        &:hover{
+                            background: var(--color-gray);
+                            transition: .3s all ease-out;
+                        }
+
+                        a{
+                            text-decoration: none;
+                            color: var(--color-black);
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
