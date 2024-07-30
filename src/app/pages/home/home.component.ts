@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TicketService } from '../../services/ticket/ticket.service';
 import { Ticket, TicketList } from '../../Types';
 import { Router } from '@angular/router';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class HomeComponent {
   ticketResult: TicketList = { total: 0, page: 1, pageSize: 12, tickets: [] };
   errorMessage: string = '';
+  faPlus = faPlus;
 
   constructor(private ticketService: TicketService, private router: Router){}
 
