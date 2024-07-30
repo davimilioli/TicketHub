@@ -37,7 +37,7 @@
                       <td id="prioridade-table"><span [class]="item.prioridade.toLowerCase()">{{ item.prioridade }}</span></td>
                       <td>{{ item.solicitante }}</td>
                       <td>{{ item.prazo_ate | date }}</td>
-                      <td id="status-table"><span class="ativo">Inativo</span></td>
+                      <td id="status-table"><span [class]="item.status.toLowerCase()">{{ item.status }}</span></td>
                       <td>{{ item.criado_em | date }}</td>
                       <td>{{ item.atualizado_em | date }}</td>
                     </tr>
