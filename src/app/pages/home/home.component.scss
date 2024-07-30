@@ -2,14 +2,30 @@
     padding: 1rem;
 
     .list{
+        border: 1px solid var(--color-gray);
+        padding: 1rem;
+        border-radius: var(--border-radius);
+
         .list-header{
             display: flex;
-            justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
+            gap: 1.5rem;
 
-            .list-header-count{
-                font-size: 1rem;
+            .list-header-item{
+                border-right: 1px solid var(--color-gray);
+                padding-right: 1rem;
+
+                span{
+                    font-size: 1rem;
+                    color: #818181;
+                    font-weight: 500;
+                }
+
+                p{
+                    font-weight: bold;
+                    color: var(--color-black);
+                }
             }
 
             .btn{
@@ -24,11 +40,12 @@
             overflow-x: auto;
             
             table {
-                width: 1400px;
+                width: 100% ;
                 border-collapse: collapse;
                 background-color: var(--color-light);
                 border: 1px solid #E1E1E1;
                 margin: auto;
+                border-radius: var(--border-radius);
             
                 thead {
                     tr {

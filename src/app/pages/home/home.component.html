@@ -1,8 +1,18 @@
 <section class="home">
+    <!-- <h2>Tickets({{ ticketResult.total > 0 ? ticketResult.total : 0 }})</h2> -->
     <div class="list">
         <div class="list-header">
-            <div class="list-header-count">
-                <h2>Tickets({{ ticketResult.total > 0 ? ticketResult.total : 0 }})</h2>
+            <div class="list-header-item">
+                <span>Tickets</span>
+                <p>{{ ticketResult.total > 0 ? ticketResult.total : 0 }}</p>
+            </div>
+            <div class="list-header-item">
+                <span>Tickets Ativos</span>
+                <p>{{ ticketResult.total > 0 ? ticketResult.total : 0 }}</p>
+            </div>
+            <div class="list-header-item">
+                <span>Tickets Inativos</span>
+                <p>{{ ticketResult.total > 0 ? ticketResult.total : 0 }}</p>
             </div>
         </div>
         <div class="list-content" *ngIf="ticketResult && ticketResult.tickets.length > 0; else elseList">
