@@ -8,7 +8,7 @@ export interface Ticket{
     prazo_de: string
     prazo_ate: string
     status: 'Ativo' | 'Inativo'
-    criado_em: string
+    criado_em?: string
     atualizado_em?: string
 }
 
