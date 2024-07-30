@@ -16,7 +16,7 @@ export class FormTicketComponent {
 
   ngOnInit(){
     this.ticketForm = new FormGroup({
-      id: new FormControl(this.ticketFormData ? this.ticketFormData.id : ''),
+      id_usuario: new FormControl(this.ticketFormData ? this.ticketFormData.id : 1),
       titulo: new FormControl(this.ticketFormData ? this.ticketFormData.titulo : '', [Validators.required]),
       descricao: new FormControl(this.ticketFormData ? this.ticketFormData.descricao : '', [Validators.required]),
       solicitante: new FormControl(this.ticketFormData ? this.ticketFormData.solicitante : ''),
@@ -40,9 +40,9 @@ export class FormTicketComponent {
   }
 
   submit(){
-/*     if(this.ticketForm.invalid){
+    if(this.ticketForm.invalid){
       return;
-    } */
+    }
     
     this.onSubmit.emit(this.ticketForm.value)
   }

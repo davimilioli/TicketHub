@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { TicketList } from '../../Types';
+import { Ticket, TicketList } from '../../Types';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 
 export class TicketService {
   baseApiUrl: string = environment.baseApiUrl;
-  apiUrl: string = `${this.baseApiUrl}/api/ticket`;
+  apiUrl: string = `${this.baseApiUrl}/api/ticket/`;
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +19,14 @@ export class TicketService {
       catchError(this.errorRequest)
     )
 
+  }
+
+  create(data: Ticket): Observable<Ticket> {
+    return this.http.post<Ticket>(this.apiUrl, data, {
+      headers: { 'Content-Type': 'application/json' }
+    }).pipe(
+      catchError(this.errorRequest)
+    )
   }
 
   private errorRequest(error: HttpErrorResponse): Observable<any> {

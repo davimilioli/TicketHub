@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Ticket } from '../../Types';
+import { TicketService } from '../../services/ticket/ticket.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-create-ticket',
@@ -8,9 +11,31 @@ import { Ticket } from '../../Types';
 })
 export class CreateTicketComponent {
 
-  createTicket(event: Ticket){
+  constructor(private ticketService: TicketService, private router: Router){}
 
+  async createTicket(event: Ticket){
     console.log(event)
+    const ticketData = {
+      id_usuario: event.id_usuario,
+      titulo: event.titulo,
+      descricao: event.descricao,
+      solicitante: event.solicitante,
+      prioridade: event.prioridade,
+      prazo_de: event.prazo_de,
+      prazo_ate: event.prazo_ate,
+      status: event.status
+    };
+
+
+   await this.ticketService.create(ticketData).subscribe(
+      response => {
+        this.router.navigate(['/']);
+        console.log('Dados enviados', response)
+      },
+      error => {
+        console.log('Erro ao enviar dados', error);
+      }
+    ) 
   }
 
 }
