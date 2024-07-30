@@ -1,5 +1,4 @@
 <section class="home">
-    <!-- <h2>Tickets({{ ticketResult.total > 0 ? ticketResult.total : 0 }})</h2> -->
     <div class="list">
         <div class="list-header">
             <div class="list-header-item">
@@ -15,7 +14,7 @@
                 <p>{{ ticketResult.total > 0 ? ticketResult.total : 0 }}</p>
             </div>
         </div>
-        <div class="list-content" *ngIf="ticketResult && ticketResult.tickets.length > 0; else elseList">
+        <div class="list-content">
             <table>
                 <thead>
                     <tr>
@@ -30,7 +29,7 @@
                         <th><p>Atualizado</p></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngIf="ticketResult && ticketResult.tickets.length > 0">
                     <tr *ngFor="let item of ticketResult.tickets" (click)="redirectTicket(item)">
                       <th>{{ item.id }}</th>
                       <td>{{ item.titulo }}</td>
@@ -45,9 +44,6 @@
                 </tbody>
             </table>
         </div>
-        <ng-template #elseList>
-            <p class="list-null">Não há tickets no momento</p>
-        </ng-template>
     </div>
 
 </section>
