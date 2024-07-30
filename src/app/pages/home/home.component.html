@@ -4,7 +4,6 @@
             <div class="list-header-count">
                 <h2>Tickets({{ ticketResult.total > 0 ? ticketResult.total : 0 }})</h2>
             </div>
-            <button class="btn"><fa-icon [icon]="faPlus"></fa-icon>Criar ticket</button>
         </div>
         <div class="list-content" *ngIf="ticketResult && ticketResult.tickets.length > 0; else elseList">
             <table>

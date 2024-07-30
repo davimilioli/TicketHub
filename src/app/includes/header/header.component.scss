@@ -6,8 +6,47 @@ header{
     justify-content: space-between;
 
     .logo{
-        font-size: 2rem;
-        font-weight: bold;
+
+        a{
+            text-decoration: none;
+            color: var(--color-black);
+            font-weight: bold;
+            font-size: 2rem;
+        }
+    }
+
+    .header-menu{
+       ul{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        list-style: none;
+
+
+        li{
+            display: flex;
+
+            a{
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                color: var(--color-black);
+                padding: 1rem;
+                transition: .3s all ease-out;
+
+
+                &:hover{
+                    background: var(--color-gray);
+                    border-radius: var(--border-radius);
+                    transition: .3s all ease-out;
+
+                }
+            }
+        }
+        
+
+       }
     }
 
     .perfil{
@@ -74,6 +113,8 @@ header{
             filter: drop-shadow(0px 0px 12px rgba(29,30,32,.16));
             color: var(--color-gray);
            /*  display: none; */
+
+           border: 1px solid var(--color-gray);
             
             .perfil-menu-header{
                 padding: 1rem;
@@ -118,5 +159,11 @@ header{
             }
         }
 
+    }
+
+    .header-actions{
+        display: flex;
+        align-items: center;
+        gap: .8rem;
     }
 }

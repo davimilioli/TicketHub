@@ -1,28 +1,31 @@
 <header>
     <div class="logo">
-        TicketHub
+        <a [routerLink]="['/']" >TicketHub</a>
     </div>
-    <div class="perfil">
-        <div class="perfil-avatar" (click)="openDropdown()">
-            <img src="https://cdn-icons-png.freepik.com/512/147/147144.png">
-        </div>
-        <div class="perfil-menu" *ngIf="menuOpen">
-            <div class="perfil-menu-header" >
-                <span>Davi Milioli</span>
-                <p>davi&#64;gmail.com</p>
-            </div>
-            <div class="perfil-menu-list">
-                <ul>
-                    <li><a href="">Informações de conta</a></li>
-                    <li><a href="">Atividades</a></li>
-                    <li>Sair</li>
-                </ul>
-            </div>
-        </div>
-<!--         <div class="perfil-description">
-            <span>Davi Milioli</span>
-        </div>
-        <fa-icon [icon]="faChevronDown"></fa-icon> -->
 
+    <div class="header-actions">
+        <button class="btn secondary"><fa-icon [icon]="faSearch"></fa-icon></button>
+        <button class="btn"><fa-icon [icon]="faPlus"></fa-icon>Criar ticket</button>
+        <!-- <button class="btn secondary"><fa-icon [icon]="faDashboard"></fa-icon></button> -->
+
+        <div class="perfil">
+            <button class="btn secondary" (click)="openDropdown()">
+                <fa-icon [icon]="faUser"></fa-icon>Perfil
+            </button>
+            <div class="perfil-menu" *ngIf="menuOpen">
+                <div class="perfil-menu-header" >
+                    <span>Davi Milioli</span>
+                    <p>davi&#64;gmail.com</p>
+                </div>
+                <div class="perfil-menu-list">
+                    <ul>
+                        <li><a href="">Informações de conta</a></li>
+                        <li><a href="">Atividades</a></li>
+                        <li>Sair</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
+
 </header>

@@ -12,7 +12,6 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 export class HomeComponent {
   ticketResult: TicketList = { total: 0, page: 1, pageSize: 12, tickets: [] };
   errorMessage: string = '';
-  faPlus = faPlus;
 
   constructor(private ticketService: TicketService, private router: Router){}
 
