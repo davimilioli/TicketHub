@@ -1,0 +1,52 @@
+<div class="form-content">
+    <form (ngSubmit)="submit()" [formGroup]="ticketForm" #formDir="ngForm">
+        <div class="form-groups-data">
+            <div class="form-group">
+                <label for="titulo">Titulo</label>
+                <input type="text" name="titulo" id="titulo" formControlName="titulo" required>
+                <div *ngIf="titulo.invalid && formDir.submitted" class="message-error">
+                    <p *ngIf="titulo.errors?.['required']">O titulo e obrigatório</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="solicitante">Solicitante</label>
+                <input type="text" name="solicitante" id="solicitante" formControlName="solicitante">
+            </div>
+        </div>
+        <div class="form-groups-data">
+            <div class="form-group">
+                <label for="prazo_de">Prazo De </label>
+                <input type="date" name="prazo_de" id="prazo_de" formControlName="prazo_de">
+            </div>
+            <div class="form-group">
+                <label for="prazo_ate">Prazo Até</label>
+                <input type="date" name="prazo_ate" id="prazo_ate" formControlName="prazo_ate" required>
+                <div *ngIf="titulo.invalid && formDir.submitted" class="message-error">
+                    <p *ngIf="prazo_ate.errors?.['required']">O prazo é obrigatório</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-groups-data">
+            <div class="form-group">
+                <label for="prioridade">Prioridade</label>
+                <select id="prioridade" name="prioridade" formControlName="prioridade">
+                    <option *ngFor="let prioridade of prioridades" [value]="prioridade">{{ prioridade }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status" formControlName="status">
+                    <option *ngFor="let statusItem of status" [value]="statusItem">{{ statusItem }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <textarea name="descricao" id="descricao" rows="20" cols="50" formControlName="descricao" required></textarea>
+            <div *ngIf="titulo.invalid && formDir.submitted" class="message-error">
+                <p *ngIf="descricao.errors?.['required']">A descrição é obrigatória</p>
+            </div>
+        </div>
+        <button class="btn" type="submit">Criar</button>
+    </form>
+</div>

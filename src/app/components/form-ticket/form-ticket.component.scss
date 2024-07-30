@@ -1,0 +1,52 @@
+.form-content{
+    border: 1px solid var(--color-gray);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+
+    form{
+        max-width: 50%;
+
+        .form-groups-data{
+            display: flex;
+            gap: 10px;
+            align-items: start;
+            
+            .form-group{
+                width: 100%;
+            }
+        }
+
+        .form-group{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+
+            label{
+                margin-bottom: .5rem;
+            }
+            
+            input, select, textarea{
+                border: 1px solid var(--color-gray);
+                padding: .5rem;
+                border-radius: var(--border-radius);
+                background: #FFF;
+            }
+
+        }
+
+        .btn{
+            width: 100%;
+            text-align: center;
+            padding: 1rem;
+            justify-content: center;
+        }
+
+        .message-error{
+            padding: .1rem;
+            p{
+                color: #ff0000;
+            }
+        }
+    }
+}
