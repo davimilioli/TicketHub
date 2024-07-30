@@ -6,6 +6,11 @@
         padding: 1rem;
         border-radius: var(--border-radius);
 
+        .list-title{
+            border-bottom: 1px solid var(--color-gray);
+            padding-bottom: 1rem;
+        }
+
         .list-header{
             display: flex;
             align-items: center;
@@ -14,7 +19,7 @@
 
             .list-header-item{
                 border-right: 1px solid var(--color-gray);
-                padding-right: 1rem;    
+                padding: .5rem 1rem 0 0;    
 
                 span{
                     font-size: 1rem;
@@ -25,6 +30,56 @@
                 p{
                     font-weight: bold;
                     color: var(--color-black);
+                }
+
+                .list-header-priority{
+                    display: flex;
+                    gap: 2rem;
+                    align-items: center;
+
+
+                    p{
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+
+                        &::before{
+                            content: '';
+                            width: 5px;
+                            height: 5px;
+                            background: #000;
+                            display: block;
+                            border-radius: 50%;
+                        }
+
+                        &.urgente::before{
+                            background: red;
+                        }
+
+                        &.urgente::before{
+                            background: red;
+                        }
+    
+                        &.alta::before{
+                            background: yellow;
+                        }
+                        
+                        &.normal::before{
+                            background: green;
+                        }
+    
+                        &.baixa::before{
+                            background: #6c757d;
+                        }
+                        
+
+                    }
+
+
+                }
+
+                &:last-child{
+                    border-right: none;
                 }
             }
 

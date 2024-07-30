@@ -1,17 +1,30 @@
 <section class="home">
     <div class="list">
+        <div class="list-title">
+            <h2>Ticket</h2>
+        </div>
         <div class="list-header">
             <div class="list-header-item">
-                <span>Tickets</span>
+                <span>Tickets Totais</span>
                 <p>{{ ticketResult.total > 0 ? ticketResult.total : 0 }}</p>
             </div>
             <div class="list-header-item">
                 <span>Tickets Ativos</span>
-                <p>{{ ticketResult.total > 0 ? ticketResult.total : 0 }}</p>
+                <p>{{ ticketActives }}</p>
             </div>
             <div class="list-header-item">
                 <span>Tickets Inativos</span>
-                <p>{{ ticketResult.total > 0 ? ticketResult.total : 0 }}</p>
+                <p>{{ ticketInactives }}</p>
+            </div>
+
+            <div class="list-header-item">
+                <span>Prioridades</span>
+                <div class="list-header-priority">
+                    <p class="baixa">Baixa: {{ ticketPriority['Baixa'] }}</p>
+                    <p class="normal">Normal: {{ ticketPriority['Normal'] }}</p>
+                    <p class="alta">Alta: {{ ticketPriority['Alta'] }}</p>
+                    <p class="urgente">Urgente: {{ ticketPriority['Urgente'] }}</p>
+                </div>
             </div>
         </div>
         <div class="list-content">
