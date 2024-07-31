@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TicketService } from '../../services/ticket/ticket.service';
 import { CreateLogResponse, Ticket, TicketLog } from '../../Types';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -15,7 +17,11 @@ export class TicketDetailComponent {
   showUser: boolean = false;
   ticketLogData: TicketLog | null = null;
   ticketLogForm!: FormGroup 
-  constructor(private route: ActivatedRoute, private ticketService: TicketService){}
+  faTrash = faTrash;
+  faPen = faPen;
+  showModal: boolean = false;
+
+  constructor(private route: ActivatedRoute, private ticketService: TicketService, private router: Router){}
 
   ngOnInit(){
     const id: string = this.route.snapshot.paramMap.get('id') as string;
@@ -100,4 +106,26 @@ export class TicketDetailComponent {
       }
     );
   }
+
+  modalExclude(){
+    console.log('cliquei')
+    this.showModal = !this.showModal;
+
+  }
+
+  async deleteTicket(){
+    const id:number = Number(this.ticket.id) ?? '';
+
+    await this.ticketService.delete(id).subscribe(
+      response => {
+        this.router.navigate(['/']);
+        console.log(response)
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  
 }

@@ -42,6 +42,12 @@ export class TicketService {
     )
   }
 
+  delete(id: number): Observable<Ticket> {
+    return this.http.delete<Ticket>(`${this.apiUrl}/${id}`).pipe(
+      catchError(this.errorRequest)
+    )
+  }
+
   private errorRequest(error: HttpErrorResponse): Observable<any> {
     let message = 'Ocorreu algum erro';
 

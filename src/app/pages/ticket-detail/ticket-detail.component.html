@@ -1,7 +1,27 @@
+<div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Tem certeza quer deseja excluir?</h2>
+        </div>
+        <div class="modal-actions">
+            <button class="btn secondary" (click)="modalExclude()">Não</button>
+            <button class="btn" (click)="deleteTicket()">Sim</button>
+        </div>
+    </div>
+</div>
 <section class="detail" *ngIf="ticket">
     <div class="detail-description">
-        <div class="detail-description-title">
+        <div class="detail-description-header">
             <h1>#{{ ticket.id }} {{ ticket.titulo }}</h1>
+            <div class="detail-description-actions">
+                <button class="btn secondary" (click)="modalExclude()">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+                <button class="btn secondary" (click)="modalExclude()">
+                    <fa-icon [icon]="faPen"></fa-icon>
+                </button>
+            </div>
+
         </div>
         <div class="detail-description-list">
             <div class="detail-description-item">
