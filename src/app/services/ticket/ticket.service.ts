@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Ticket, TicketList } from '../../Types';
+import { CreateLogResponse, Ticket, TicketList, TicketLog } from '../../Types';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -28,6 +28,14 @@ export class TicketService {
 
   create(data: Ticket): Observable<Ticket> {
     return this.http.post<Ticket>(this.apiUrl, data, {
+      headers: { 'Content-Type': 'application/json' }
+    }).pipe(
+      catchError(this.errorRequest)
+    )
+  }
+
+  createLog(data: TicketLog):Observable<CreateLogResponse> {
+    return this.http.post<CreateLogResponse>(`${this.apiUrl}/log`, data, {
       headers: { 'Content-Type': 'application/json' }
     }).pipe(
       catchError(this.errorRequest)

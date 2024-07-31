@@ -9,6 +9,7 @@
         border: 1px solid var(--color-gray);
         padding: 1rem;
         border-radius: var(--border-radius);
+        max-height: 700px;
         
         .detail-description-title{
             border-bottom: 1px solid var(--color-gray);
@@ -56,11 +57,12 @@
         }
     }
 
-    .detail-log{
+    .detail-log-form{
         padding-top: 1rem;
         border: 1px solid var(--color-gray);
         padding: 1rem;
         border-radius: var(--border-radius);
+        max-height: 700px;
 
         .detail-log-title{
             border-bottom: 1px solid var(--color-gray);
@@ -113,6 +115,51 @@
                         color: #ff0000;
                     }
                 }
+            }
+        }
+    }
+
+    .detail-log{
+        border: 1px solid var(--color-gray);
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        margin-top: 1rem;
+
+        .detail-log-title{
+            border-bottom: 1px solid var(--color-gray);
+            padding-bottom: 1rem;
+        }
+
+        .detail-log-item{
+            border-bottom: 1px solid var(--color-gray);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            display: flex;
+            gap: 1rem;
+
+            .detail-log-info{
+                border-right: 1px solid var(--color-gray);
+                padding-right: 1rem;
+
+                .detail-log-info-item{
+                    margin-bottom: .5rem;
+    
+                    span{
+                        font-size: 1rem;
+                        color: #818181;
+                        font-weight: 500;
+                    }
+        
+                    p{
+                        font-weight: bold;
+                        color: var(--color-black);
+                    }
+                }
+            }
+
+            .detail-log-description{
+                word-break: break-all;
+                max-width: 80%;
             }
         }
     }

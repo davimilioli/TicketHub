@@ -10,6 +10,7 @@ export interface Ticket{
     status: 'Ativo' | 'Inativo'
     criado_em?: string
     atualizado_em?: string
+    historico?: TicketLog[]
 }
 
 export interface TicketLog{
@@ -28,4 +29,10 @@ export interface TicketList {
     page: number
     pageSize: number
     tickets: Ticket[]
+}
+
+
+export interface CreateLogResponse {
+    mensagem: string;
+    log: TicketLog;
 }

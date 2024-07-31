@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TicketService } from '../../services/ticket/ticket.service';
-import { Ticket, TicketLog } from '../../Types';
+import { CreateLogResponse, Ticket, TicketLog } from '../../Types';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -63,7 +63,41 @@ export class TicketDetailComponent {
     }
   }
 
-  submit(){
-    console.log(this.ticketLogForm.value)
+  async submit(){
+    if(this.ticketLogForm.invalid){
+      return;
+    } 
+
+    const ticketFormDatas = this.ticketLogForm.value;
+    console.log(ticketFormDatas)
+
+    const data = {
+      id_ticket: ticketFormDatas.id_ticket,
+      usuario: ticketFormDatas.usuario,
+      descricao: ticketFormDatas.descricao,
+      tipo: ticketFormDatas.tipo,
+    }
+
+    if(ticketFormDatas.para){
+      data.tipo = ticketFormDatas.para
+    }
+
+    await this.ticketService.createLog(data).subscribe(
+      (response: CreateLogResponse) => {
+        console.log('Dados enviados', response)
+
+        const newLog: TicketLog = response.log;
+
+        if(!this.ticket.historico){
+          this.ticket.historico = [];
+        }
+
+        this.ticket.historico = [...this.ticket.historico, newLog];
+        this.ticketLogForm.reset();
+      },
+      error => {
+        console.log('Erro ao enviar dados', error)
+      }
+    );
   }
 }
