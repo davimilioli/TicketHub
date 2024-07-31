@@ -38,7 +38,7 @@ export class HomeComponent {
   };
 
   redirectTicket(ticket: Ticket): void{
-    this.router.navigate(['/detalhe/', ticket.id])
+    this.router.navigate(['/ticket/', ticket.id])
   }
 
   countStatus(){

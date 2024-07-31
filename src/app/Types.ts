@@ -12,6 +12,17 @@ export interface Ticket{
     atualizado_em?: string
 }
 
+export interface TicketLog{
+    id?: number
+    id_ticket: number
+    usuario: string
+    descricao: string
+    tipo: 'Mensagem' | 'Entrega Final' | 'Altera Responsabilidade'
+    para?: string
+    criado_em?: string
+    atualizado_em?: string
+}
+
 export interface TicketList {
     total: number
     page: number

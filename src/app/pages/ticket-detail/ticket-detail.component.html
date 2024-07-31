@@ -1,0 +1,62 @@
+<section class="detail" *ngIf="ticket">
+    <div class="detail-description">
+        <div class="detail-description-title">
+            <h1>#{{ ticket.id }} {{ ticket.titulo }}</h1>
+        </div>
+        <div class="detail-description-list">
+            <div class="detail-description-item">
+                <span>Solicitado por</span>
+                <p>{{ ticket.solicitante }}</p>
+            </div>
+            <div class="detail-description-item">
+                <span>Prioridade</span>
+                <p>{{ ticket.prioridade }}</p>
+            </div>
+            <div class="detail-description-item">
+                <span>Status</span>
+                <p>{{ ticket.status }}</p>
+            </div>
+            <div class="detail-description-item">
+                <span>Criado em</span>
+                <p>{{ ticket.criado_em | date }}</p>
+            </div>
+            <div class="detail-description-item">
+                <span>Prazo</span>
+                <p>{{ ticket.prazo_de | date }} até {{ ticket.prazo_ate | date }}</p>
+            </div>
+        </div>
+        <div class="detail-description-ticket">
+            <span>Descrição</span>
+            <p>{{ ticket.descricao }}</p>
+        </div>
+    </div>
+
+    <div class="detail-log">
+        <div class="detail-log-title">
+            <h2>Interações</h2>
+        </div>
+        <div class="form-content">
+            <form (ngSubmit)="submit()" [formGroup]="ticketLogForm" #formDir="ngForm">
+                <div class="form-group">
+                    <label for="tipo">Tipo de interação</label>
+                    <select name="tipo" id="tipo" (change)="interaction($event)" formControlName="tipo">
+                        <option *ngFor="let type of typeInteraction" [value]="type" >{{ type }}</option>
+                    </select>
+                </div>
+                <div class="form-group" *ngIf="showUser">
+                    <label for="para">Usuário</label>
+                    <select name="para" id="para" formControlName="para">
+                        <option *ngFor="let type of typeInteraction" [value]="type">{{ type }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">Descrição</label>
+                    <textarea name="descricao" id="descricao" rows="20" cols="50" formControlName="descricao"></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+
+</section>

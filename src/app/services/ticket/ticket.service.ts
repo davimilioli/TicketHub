@@ -10,7 +10,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 
 export class TicketService {
   baseApiUrl: string = environment.baseApiUrl;
-  apiUrl: string = `${this.baseApiUrl}/api/ticket/`;
+  apiUrl: string = `${this.baseApiUrl}/api/ticket`;
 
   constructor(private http: HttpClient) { }
 
@@ -18,7 +18,12 @@ export class TicketService {
     return this.http.get<TicketList>(this.apiUrl).pipe(
       catchError(this.errorRequest)
     )
+  }
 
+  get(id: string):Observable<Ticket> {
+    return this.http.get<Ticket>(`${this.apiUrl}/${id}`).pipe(
+      catchError(this.errorRequest)
+    );
   }
 
   create(data: Ticket): Observable<Ticket> {

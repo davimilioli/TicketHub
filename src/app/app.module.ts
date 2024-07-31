@@ -12,6 +12,7 @@ import { FormTicketComponent } from './components/form-ticket/form-ticket.compon
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TicketDetailComponent } from './pages/ticket-detail/ticket-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     HomeComponent,
     CreateTicketComponent,
-    FormTicketComponent
+    FormTicketComponent,
+    TicketDetailComponent
   ],
   imports: [
     BrowserModule,
