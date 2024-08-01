@@ -1,3 +1,4 @@
+/* Ticket */
 export interface Ticket{
     id?: number
     id_usuario: number
@@ -31,8 +32,12 @@ export interface TicketList {
     tickets: Ticket[]
 }
 
-
 export interface CreateLogResponse {
     mensagem: string;
     log: TicketLog;
+}
+
+export interface EditTicketResponse {
+    mensagem: string;
+    ticket: Ticket
 }

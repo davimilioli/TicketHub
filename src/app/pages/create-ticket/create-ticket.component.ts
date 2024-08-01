@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './create-ticket.component.scss'
 })
 export class CreateTicketComponent {
+  btnText: string = 'Criar'
 
   constructor(private ticketService: TicketService, private router: Router){}
 

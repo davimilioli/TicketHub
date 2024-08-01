@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { CreateLogResponse, Ticket, TicketList, TicketLog } from '../../Types';
+import { CreateLogResponse, EditTicketResponse, Ticket, TicketList, TicketLog } from '../../Types';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -44,6 +44,12 @@ export class TicketService {
 
   delete(id: number): Observable<Ticket> {
     return this.http.delete<Ticket>(`${this.apiUrl}/${id}`).pipe(
+      catchError(this.errorRequest)
+    )
+  }
+
+  update(data: Ticket): Observable<EditTicketResponse> {
+    return this.http.put<EditTicketResponse>(`${this.apiUrl}/${data.id}`, data).pipe(
       catchError(this.errorRequest)
     )
   }

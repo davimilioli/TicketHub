@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TicketService } from '../../services/ticket/ticket.service';
-import { CreateLogResponse, Ticket, TicketLog } from '../../Types';
+import { CreateLogResponse, EditTicketResponse, Ticket, TicketLog } from '../../Types';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
@@ -19,7 +19,9 @@ export class TicketDetailComponent {
   ticketLogForm!: FormGroup 
   faTrash = faTrash;
   faPen = faPen;
-  showModal: boolean = false;
+  showModalExclude: boolean = false;
+  showModalEdit: boolean = false;
+  btnText: string = 'Salvar';
 
   constructor(private route: ActivatedRoute, private ticketService: TicketService, private router: Router){}
 
@@ -28,7 +30,6 @@ export class TicketDetailComponent {
     this.ticketService.get(id).subscribe(
       result => {
         this.ticket = result;
-        console.log(result)
       },
       error => {
         console.log(error);
@@ -40,8 +41,8 @@ export class TicketDetailComponent {
       usuario: new FormControl('Davi'),
       descricao: new FormControl(this.ticketLogData ? this.ticketLogData.descricao : '', [Validators.required]),
       tipo: new FormControl(this.ticketLogData ? this.ticketLogData.tipo : 'Mensagem', [Validators.required]),
-    })
-    
+    });
+
   }
 
   get descricao(){
@@ -107,10 +108,53 @@ export class TicketDetailComponent {
     );
   }
 
-  modalExclude(){
-    console.log('cliquei')
-    this.showModal = !this.showModal;
+  async editTicket(event: Ticket){
+    console.log(event)
+    
+    const historico = this.ticket.historico;
 
+    const ticketData = {
+      id: Number(this.ticket.id),
+      id_usuario: 1,
+      titulo: event.titulo,
+      descricao: event.descricao,
+      solicitante: event.solicitante,
+      prioridade: event.prioridade,
+      prazo_de: event.prazo_de,
+      prazo_ate: event.prazo_ate,
+      status: event.status
+    };
+
+    await this.ticketService.update(ticketData).subscribe(
+      (response: EditTicketResponse) => {
+        console.log(response.ticket);
+
+        const ticketUpdate: Ticket = {
+          ...ticketData,
+          historico: historico
+        }
+
+        console.log(ticketUpdate)
+
+        this.ticket = ticketUpdate;
+
+        this.ticket = { ...this.ticket };
+
+        this.showModalEdit = false
+      },
+      error => {
+        console.log(error);
+      }
+    )
+
+  }
+
+  modalExclude(){
+    this.showModalExclude = !this.showModalExclude;
+  }
+
+  modalEdit(){
+    this.showModalEdit = !this.showModalEdit;
   }
 
   async deleteTicket(){
@@ -126,6 +170,10 @@ export class TicketDetailComponent {
       }
     )
   }
+
+
+
+
 
   
 }

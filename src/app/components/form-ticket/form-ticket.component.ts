@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { Ticket } from '../../Types';
 
@@ -11,12 +11,14 @@ export class FormTicketComponent {
   @Output() onSubmit = new EventEmitter<Ticket>();
   prioridades: string[] = ['Baixa', 'Normal', 'Alta', 'Urgente'];
   status: string[] = ['Ativo', 'Inativo']
-  ticketFormData: Ticket | null = null;
+  @Input() ticketFormData: Ticket | null = null;
+  @Input() btnText!: string;
   ticketForm!: FormGroup
 
   ngOnInit(){
     this.ticketForm = new FormGroup({
-      id_usuario: new FormControl(this.ticketFormData ? this.ticketFormData.id : 1),
+      id: new FormControl(this.ticketFormData ? this.ticketFormData.id : ''),
+      id_usuario: new FormControl(this.ticketFormData ? this.ticketFormData.id_usuario : 1),
       titulo: new FormControl(this.ticketFormData ? this.ticketFormData.titulo : '', [Validators.required]),
       descricao: new FormControl(this.ticketFormData ? this.ticketFormData.descricao : '', [Validators.required]),
       solicitante: new FormControl(this.ticketFormData ? this.ticketFormData.solicitante : ''),

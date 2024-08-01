@@ -1,4 +1,4 @@
-<div class="modal" *ngIf="showModal">
+<div class="modal" *ngIf="showModalExclude">
     <div class="modal-content">
         <div class="modal-header">
             <h2>Tem certeza quer deseja excluir?</h2>
@@ -9,6 +9,14 @@
         </div>
     </div>
 </div>
+<div class="modal" *ngIf="showModalEdit">
+    <div class="modal-content edit" *ngIf="ticket">
+        <div class="modal-header">
+            <h2>Editar ticket</h2>
+        </div>
+        <app-form-ticket (onSubmit)="editTicket($event)" [ticketFormData]="ticket" [btnText]="btnText"></app-form-ticket>
+    </div>
+</div>
 <section class="detail" *ngIf="ticket">
     <div class="detail-description">
         <div class="detail-description-header">
@@ -17,7 +25,7 @@
                 <button class="btn secondary" (click)="modalExclude()">
                     <fa-icon [icon]="faTrash"></fa-icon>
                 </button>
-                <button class="btn secondary" (click)="modalExclude()">
+                <button class="btn secondary" (click)="modalEdit()">
                     <fa-icon [icon]="faPen"></fa-icon>
                 </button>
             </div>

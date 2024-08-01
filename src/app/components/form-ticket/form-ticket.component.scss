@@ -3,9 +3,10 @@
     padding: 1rem;
     border-radius: var(--border-radius);
     margin-top: 1rem;
+    overflow: scroll;
+    max-height: 87%;
 
     form{
-        max-width: 50%;
 
         .form-groups-data{
             display: flex;
