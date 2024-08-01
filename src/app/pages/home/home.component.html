@@ -49,10 +49,10 @@
                       <td>{{ item.descricao.length > 35 ? item.descricao.slice(0,35) + '...' : item.descricao }}</td>
                       <td id="prioridade-table"><span [class]="item.prioridade.toLowerCase()">{{ item.prioridade }}</span></td>
                       <td>{{ item.solicitante }}</td>
-                      <td>{{ item.prazo_ate | date }}</td>
+                      <td>{{ item.prazo_ate | date: 'dd/MM/yyyy' }}</td>
                       <td id="status-table"><span [class]="item.status.toLowerCase()">{{ item.status }}</span></td>
-                      <td>{{ item.criado_em | date }}</td>
-                      <td>{{ item.atualizado_em | date }}</td>
+                      <td>{{ item.criado_em | date: 'dd/MM/yyyy' }}</td>
+                      <td>{{ item.atualizado_em | date: 'dd/MM/yyyy' }}</td>
                     </tr>
                 </tbody>
             </table>
