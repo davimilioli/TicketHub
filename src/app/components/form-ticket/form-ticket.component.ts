@@ -23,8 +23,8 @@ export class FormTicketComponent {
       descricao: new FormControl(this.ticketFormData ? this.ticketFormData.descricao : '', [Validators.required]),
       solicitante: new FormControl(this.ticketFormData ? this.ticketFormData.solicitante : ''),
       prioridade: new FormControl(this.ticketFormData ? this.ticketFormData.prioridade : 'Baixa' ),
-      prazo_de: new FormControl(this.ticketFormData ? new Date(this.ticketFormData.prazo_de) : new Date()),
-      prazo_ate: new FormControl(this.ticketFormData ? new Date(this.ticketFormData.prazo_ate) : '', [Validators.required]),
+      prazo_de: new FormControl(this.ticketFormData ? this.formatDate(this.ticketFormData.prazo_de) : ''),
+      prazo_ate: new FormControl(this.ticketFormData ? this.formatDate(this.ticketFormData.prazo_ate) : '', [Validators.required]),
       status: new FormControl(this.ticketFormData ? this.ticketFormData.status : 'Ativo'),
     });
   }
@@ -47,5 +47,14 @@ export class FormTicketComponent {
     }
     
     this.onSubmit.emit(this.ticketForm.value)
+  }
+
+  formatDate(data: any){
+    const date = new Date(data);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+  
+    return `${year}-${month}-${day}`;
   }
 }

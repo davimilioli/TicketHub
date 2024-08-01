@@ -46,11 +46,11 @@
             </div>
             <div class="detail-description-item">
                 <span>Criado em</span>
-                <p>{{ ticket.criado_em | date }}</p>
+                <p>{{ ticket.criado_em | date: 'dd/MM/yyyy' }}</p>
             </div>
             <div class="detail-description-item">
                 <span>Prazo</span>
-                <p>{{ ticket.prazo_de | date }} até {{ ticket.prazo_ate | date }}</p>
+                <p>{{ ticket.prazo_de | date: 'dd/MM/yyyy' }} até {{ ticket.prazo_ate | date: 'dd/MM/yyyy' }}</p>
             </div>
         </div>
         <div class="detail-description-ticket">
@@ -103,7 +103,7 @@
                         </div>
                         <div class="detail-log-info-item">
                             <span>Inserido em</span>
-                            <p>{{ log.criado_em | date }}</p>
+                            <p>{{ log.criado_em | date: 'dd/MM/yyyy' }}</p>
                         </div>
                     </div>
                     <div class="detail-log-description">

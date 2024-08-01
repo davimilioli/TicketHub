@@ -30,6 +30,7 @@ export class TicketDetailComponent {
     this.ticketService.get(id).subscribe(
       result => {
         this.ticket = result;
+        console.log(this.ticket.prazo_ate)
       },
       error => {
         console.log(error);
@@ -109,10 +110,19 @@ export class TicketDetailComponent {
   }
 
   async editTicket(event: Ticket){
-    console.log(event)
-    
     const historico = this.ticket.historico;
 
+    function formatDateLocal(date: string){
+      const newDate = new Date(date + 'T00:00:00');
+      const timeZone = newDate.getTimezoneOffset() * 6000;
+      const convertDate = new Date(newDate.getTime() + timeZone);
+      return convertDate.toISOString();
+    }
+
+    const prazo_de = formatDateLocal(event.prazo_de);
+    const prazo_ate = formatDateLocal(event.prazo_ate);
+    console.log(prazo_ate)
+  
     const ticketData = {
       id: Number(this.ticket.id),
       id_usuario: 1,
@@ -120,21 +130,18 @@ export class TicketDetailComponent {
       descricao: event.descricao,
       solicitante: event.solicitante,
       prioridade: event.prioridade,
-      prazo_de: event.prazo_de,
-      prazo_ate: event.prazo_ate,
-      status: event.status
+      prazo_de: prazo_de,
+      prazo_ate: prazo_ate, 
+      status: event.status,
     };
 
     await this.ticketService.update(ticketData).subscribe(
       (response: EditTicketResponse) => {
-        console.log(response.ticket);
 
         const ticketUpdate: Ticket = {
-          ...ticketData,
+          ...response.ticket,
           historico: historico
         }
-
-        console.log(ticketUpdate)
 
         this.ticket = ticketUpdate;
 
@@ -145,8 +152,7 @@ export class TicketDetailComponent {
       error => {
         console.log(error);
       }
-    )
-
+    ) 
   }
 
   modalExclude(){
