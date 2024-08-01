@@ -28,7 +28,6 @@ export class HomeComponent {
         this.ticketResult = result
         this.countStatus();
         this.countPriorities()
-        console.log(this.ticketResult);
       }, 
       error => {
         this.errorMessage = error
@@ -58,6 +57,5 @@ export class HomeComponent {
       }
     })
 
-    console.log(this.ticketPriority);
   }
 }

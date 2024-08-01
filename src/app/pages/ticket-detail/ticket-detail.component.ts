@@ -75,9 +75,8 @@ export class TicketDetailComponent {
     if(this.ticketLogForm.invalid){
       return;
     } 
-
+    
     const ticketFormDatas = this.ticketLogForm.value;
-    console.log(ticketFormDatas)
 
     const data = {
       id_ticket: ticketFormDatas.id_ticket,
@@ -92,8 +91,6 @@ export class TicketDetailComponent {
 
     await this.ticketService.createLog(data).subscribe(
       (response: CreateLogResponse) => {
-        console.log('Dados enviados', response)
-
         const newLog: TicketLog = response.log;
 
         if(!this.ticket.historico){

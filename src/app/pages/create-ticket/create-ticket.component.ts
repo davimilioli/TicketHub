@@ -15,7 +15,6 @@ export class CreateTicketComponent {
   constructor(private ticketService: TicketService, private router: Router){}
 
   async createTicket(event: Ticket){
-    console.log(event)
     const ticketData = {
       id_usuario: event.id_usuario,
       titulo: event.titulo,
@@ -31,7 +30,6 @@ export class CreateTicketComponent {
    await this.ticketService.create(ticketData).subscribe(
       response => {
         this.router.navigate(['/']);
-        console.log('Dados enviados', response)
       },
       error => {
         console.log('Erro ao enviar dados', error);
