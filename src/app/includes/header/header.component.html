@@ -2,11 +2,10 @@
     <div class="logo">
         <a [routerLink]="['/']" >TicketHub</a>
     </div>
-
+    <button class="btn secondary button-menu-mobile" (click)="openDropdown()"><fa-icon [icon]="faBars"></fa-icon></button>
     <div class="header-actions">
-        <button class="btn secondary"><fa-icon [icon]="faSearch"></fa-icon></button>
-        <button class="btn" [routerLink]="['/criarTicket']"  ><fa-icon [icon]="faPlus"></fa-icon>Criar ticket</button>
-        <!-- <button class="btn secondary"><fa-icon [icon]="faDashboard"></fa-icon></button> -->
+        <!-- <button class="btn secondary"><fa-icon [icon]="faSearch"></fa-icon></button> -->
+        <button class="btn" [routerLink]="['/criarTicket']"><fa-icon [icon]="faPlus"></fa-icon>Criar ticket</button>
 
         <div class="perfil">
             <button class="btn secondary" (click)="openDropdown()">
@@ -19,13 +18,42 @@
                 </div>
                 <div class="perfil-menu-list">
                     <ul>
-                        <li><a href="">Informações de conta</a></li>
-                        <li><a href="">Atividades</a></li>
+<!--                         <li><a href="">Informações de conta</a></li>
+                        <li><a href="">Atividades</a></li> -->
                         <li>Sair</li>
                     </ul>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="menu-mobile" *ngIf="menuOpen">
+        <div class="menu-mobile-header">
+            <div class="logo">
+                <a [routerLink]="['/']">TicketHub</a>
+            </div>
+            <button class="btn secondary" (click)="openDropdown()"><fa-icon [icon]="faClose"></fa-icon></button>
+        </div>
+        <div class="menu-mobile-content">
+            <div class="menu-mobile-list">
+                <ul>
+                    <li>
+                        <a [routerLink]="['/criarTicket']">
+                            <fa-icon [icon]="faPlus"></fa-icon>
+                            Criar Ticket
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <fa-icon [icon]="faPlus"></fa-icon>
+                            Sair
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
     </div>
 
 </header>

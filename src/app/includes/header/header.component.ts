@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faChevronCircleDown, faUser, faHistory, faSearch, faPlus, faDashboard } from '@fortawesome/free-solid-svg-icons';
+import { faChevronCircleDown, faUser, faHistory, faSearch, faPlus, faDashboard, faBars, faClose } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,8 @@ export class HeaderComponent {
   faHistory = faHistory
   faSearch = faSearch
   faPlus = faPlus;
-  faDashboard = faDashboard
+  faBars = faBars;
+  faClose = faClose
   menuOpen: boolean = false;
 
   openDropdown(){
