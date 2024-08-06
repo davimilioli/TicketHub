@@ -15,7 +15,7 @@ export class HeaderComponent {
   faBars = faBars;
   faClose = faClose
   menuOpen: boolean = false;
-  searchOpen: boolean = false
+  searchOpen: boolean = false;
 
   openDropdown(){
     this.menuOpen = !this.menuOpen;

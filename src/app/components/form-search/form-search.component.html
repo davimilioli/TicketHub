@@ -5,49 +5,52 @@
                 <fa-icon [icon]="faClose"></fa-icon>
             </button>
         </div>
-        <form>
+        <form (submit)="searchTicket()">
             <div class="form-search-header">
                 <div class="form-search-input">
                     <fa-icon [icon]="faSearch"></fa-icon>
-                    <input type="text" name="term" id="term">
-                    <fa-icon [icon]="faClose"></fa-icon>
+                    <input type="text" name="term" id="term" [(ngModel)]="searchTerm" (input)="searchTicket()">
+                    <fa-icon [icon]="faClose" *ngIf="searchTerm" (click)="searchTerm = ''"></fa-icon>
                 </div>
                 <div class="form-search-description">
-                    <p>Navigate</p>
+                    <p>Busque por: ID, Titulo ou Solicitante</p>
                 </div>
             </div>
         </form>
     </div>
-    <div class="form-search-result">
-<!--         <div class="loading">
+
+    <div class="form-search-result"> 
+        <div class="loading" *ngIf="loading">
             <p>Buscando...</p>
-        </div> -->
-        <div class="form-search-result-header">
-            <h2>Resultado de pesquisa</h2>
         </div>
         <div class="form-search-list">
-            <div class="form-search-item">
-                <div class="form-search-title">
-                    <h3>#1 Titulo</h3>
-                    <div class="form-search-status urgente">
-                        <div>
-                            <span>Prioridade</span>
-                            <p>Urgente</p>
-                        </div>
-                        <div>
-                            <span>Status</span>
-                            <p>Ativo</p>
+            <div class="form-search-list-result" *ngIf="result.length > 0">
+                <div class="form-search-item" *ngFor="let ticket of result" [routerLink]="['/ticket/', ticket.id]" (click)="closeSearch()">
+                    <div class="form-search-title">
+                        <h3>#{{ ticket.id }} {{ ticket.titulo}}</h3>
+                        <div class="form-search-status urgente">
+                            <div>
+                                <span>Prioridade</span>
+                                <p>{{ ticket.prioridade }}</p>
+                            </div>
+                            <div>
+                                <span>Status</span>
+                                <p>{{ ticket.status }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-search-body">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur perspiciatis possimus veritatis, eaque minus optio mollitia...</p>
-                </div>
-                <div class="form-search-footer">
-                    <span>Solicitante: Davi Milioli</span>
-                    <span>Criado em: 21/09/2002 </span>
+                    <div class="form-search-body">
+                        <p>{{ ticket.descricao.length > 80 ? ticket.descricao.slice(0,80) + '...' : ticket.descricao }}</p>
+                    </div>
+                    <div class="form-search-footer">
+                        <span>Solicitante: {{ ticket.solicitante }}</span>
+                        <span>Criado em: {{ ticket.criado_em | date: 'dd/MM/yyyy' }} </span>
+                    </div>
                 </div>
             </div>
-        </div> 
+            <div *ngIf="result.length === 0 && searchTerm !== '' && !loading" class="result-notfound">
+                <p>Nenhum resultado encontrado.</p>
+            </div>
+        </div>
     </div>
 </div>

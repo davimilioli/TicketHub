@@ -58,17 +58,19 @@
                 .form-search-description{
                     padding: 1rem;
                     border-top: 1px solid var(--color-gray);    
+
+                    p{
+                        font-size: .8rem;
+                        color: var(--color-black)
+                    }
                 }
             }
         }
     }
     
     .form-search-result{
-        border: 1px solid var(--color-gray);  
         margin-top: 1rem;
-        background: #FFF;
         width: 50rem;
-        border-radius: var(--border-radius);  
 
         .loading{
             padding: 1rem;
@@ -83,66 +85,85 @@
         }
 
         .form-search-list{
-            padding: 1rem;
-            
-            .form-search-item{
 
-                border: 1px solid var(--color-gray);
+            .form-search-list-result{
+                padding: 1rem;
+                background: #FFF;
+                border: 1px solid var(--color-gray);  
                 border-radius: var(--border-radius);  
 
-                .form-search-title{
-                    padding: 0 1rem;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: .5rem;
-                    border-bottom: 1px solid var(--color-gray);  
-
-                    span{
-                        font-size: 1rem;
-                        color: #818181;
-                        font-weight: 500;
+                .form-search-item{
+                    border: 1px solid var(--color-gray);
+                    border-radius: var(--border-radius); 
+                    cursor: pointer; 
+                    transition: .3s all ease-out;
+    
+                    &:hover {
+                        transition: .3s all ease-out;
+                        background: #f4f3f3;
                     }
-
-                    p{
-                        font-weight: bold;
-                        color: var(--color-black);
+    
+                    .form-search-title{
+                        padding: 0 1rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: .5rem;
+                        border-bottom: 1px solid var(--color-gray);  
+    
+                        span{
+                            font-size: 1rem;
+                            color: #818181;
+                            font-weight: 500;
+                        }
+    
+                        p{
+                            font-weight: bold;
+                            color: var(--color-black);
+                        }
+    
+                        .form-search-status{
+                            padding: .5rem;
+                            border-radius: var(--border-radius); 
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+    
+                            p, span{
+                                font-size: .8rem;
+                            }
+                        }
                     }
-
-                    .form-search-status{
-                        padding: .5rem;
-                        border-radius: var(--border-radius); 
+    
+    
+                    .form-search-body{
+                        padding: 1rem;
+                        p{
+                            color: #818181;
+                        }
+                    }
+    
+                    .form-search-footer{
                         display: flex;
                         align-items: center;
                         gap: 1rem;
-
-                        p, span{
+                        justify-content: end;
+                        padding: .5rem;
+                        span{
+                            color: #818181;
                             font-size: .8rem;
                         }
                     }
                 }
-
-
-                .form-search-body{
-                    padding: 1rem;
-                    p{
-                        color: #818181;
-                    }
-                }
-
-                .form-search-footer{
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    justify-content: end;
-                    padding: .5rem;
-                    span{
-                        color: #818181;
-                        font-size: .8rem;
-                    }
-                }
+            }
+            
+            .result-notfound{
+                border: 1px solid var(--color-gray);
+                border-radius: var(--border-radius); 
+                background: #FFF;
+                padding: 1rem;
+                text-align: center;
             }
         }
-
     }
 }
