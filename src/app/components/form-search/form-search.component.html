@@ -1,0 +1,53 @@
+<div class="form-search">
+    <div class="form-search-content">
+        <div class="form-search-close">
+            <button class="btn" (click)="closeSearch()">
+                <fa-icon [icon]="faClose"></fa-icon>
+            </button>
+        </div>
+        <form>
+            <div class="form-search-header">
+                <div class="form-search-input">
+                    <fa-icon [icon]="faSearch"></fa-icon>
+                    <input type="text" name="term" id="term">
+                    <fa-icon [icon]="faClose"></fa-icon>
+                </div>
+                <div class="form-search-description">
+                    <p>Navigate</p>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="form-search-result">
+<!--         <div class="loading">
+            <p>Buscando...</p>
+        </div> -->
+        <div class="form-search-result-header">
+            <h2>Resultado de pesquisa</h2>
+        </div>
+        <div class="form-search-list">
+            <div class="form-search-item">
+                <div class="form-search-title">
+                    <h3>#1 Titulo</h3>
+                    <div class="form-search-status urgente">
+                        <div>
+                            <span>Prioridade</span>
+                            <p>Urgente</p>
+                        </div>
+                        <div>
+                            <span>Status</span>
+                            <p>Ativo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-search-body">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur perspiciatis possimus veritatis, eaque minus optio mollitia...</p>
+                </div>
+                <div class="form-search-footer">
+                    <span>Solicitante: Davi Milioli</span>
+                    <span>Criado em: 21/09/2002 </span>
+                </div>
+            </div>
+        </div> 
+    </div>
+</div>

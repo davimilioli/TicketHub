@@ -15,9 +15,17 @@ export class HeaderComponent {
   faBars = faBars;
   faClose = faClose
   menuOpen: boolean = false;
+  searchOpen: boolean = false
 
   openDropdown(){
-    console.log('apertei')
     this.menuOpen = !this.menuOpen;
+  }
+
+  openSearch(){
+    this.searchOpen = true;
+  }
+
+  closeSearch(){
+    this.searchOpen = false;
   }
 }

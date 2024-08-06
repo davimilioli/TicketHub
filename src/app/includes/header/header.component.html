@@ -4,7 +4,7 @@
     </div>
     <button class="btn secondary button-menu-mobile" (click)="openDropdown()"><fa-icon [icon]="faBars"></fa-icon></button>
     <div class="header-actions">
-        <!-- <button class="btn secondary"><fa-icon [icon]="faSearch"></fa-icon></button> -->
+        <button class="btn secondary" (click)="openSearch()"><fa-icon [icon]="faSearch"></fa-icon></button>
         <button class="btn" [routerLink]="['/criarTicket']"><fa-icon [icon]="faPlus"></fa-icon>Criar ticket</button>
 
         <div class="perfil">
@@ -57,3 +57,4 @@
     </div>
 
 </header>
+<app-form-search (onCloseSearch)="closeSearch()" *ngIf="searchOpen"></app-form-search>
